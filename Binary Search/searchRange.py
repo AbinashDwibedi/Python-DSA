@@ -1,4 +1,4 @@
-def searchRange(self, nums, target):
+def searchRange(nums, target):
         left = 0
         right = len(nums)-1
         lans = -1
