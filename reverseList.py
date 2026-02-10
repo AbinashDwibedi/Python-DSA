@@ -19,15 +19,31 @@ class Solution:
         #     temp = temp.next
         # return head 
 
-        if head == None or head.next == None:
+        # if head == None or head.next == None:
+        #     return head
+        # prev = head
+        # nxt = head.next
+        # prev.next = None
+        # while nxt != None:
+        #     tmp = nxt.next
+        #     nxt.next = prev
+        #     prev = nxt
+        #     nxt = tmp
+        # head = prev
+        # return head
+
+        temp = None
+        if not head:
             return head
-        prev = head
-        nxt = head.next
-        prev.next = None
-        while nxt != None:
-            tmp = nxt.next
-            nxt.next = prev
-            prev = nxt
-            nxt = tmp
-        head = prev
-        return head
+        def helper(curr):
+            nonlocal temp
+            if curr.next == None:
+                temp = curr
+                return curr
+            last = helper(curr.next)
+            last.next = curr
+            curr.next = None
+            return curr
+        helper(head)
+        return temp
+    
